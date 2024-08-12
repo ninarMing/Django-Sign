@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <title>Sign Login</title>
+</head>
+<body>
+   <h1>发布会管理</h1>
+   <form action="login_action" method="post">
+
+       <input name="username" type="text" placeholder="username"/><br/>
+       <input name="password" type="password" placeholder="password"/><br/>
+       {{error}}<br/>
+       {% bootstrap_button button_type="submit" content="登录" %}
+       <!--<button id="btn_submit" type="submit">登录</button>-->
+       <!-- 添加CSRF令牌-->
+       {% csrf_token %}
+
+   </form><br/>
+</body>
+</html>

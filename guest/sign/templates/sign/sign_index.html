@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <title>Sign_index</title>
+</head>
+<body role="document">
+
+<nav class="navbar navbar-expand-sm bg-light">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">{{ event.name }}</a>
+        </div>
+        <div id="navbar" class="navbar navbar-expand-sm bg-light">
+            <ul class="nav navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/sign/event_manage">发布会</a></li>
+                <li class="nav-item"><a class="nav-link" href="/sign/guest_manage">嘉宾</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- 签到功能 -->
+<div class="page-header">
+    <form class="navbar-form" method="post" action="/sign/sign_index_action/{{ event.id }}/">
+        <div class="form-group">
+            <input name="phone" type="text" placeholder="输入手机号" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success">签到</button>
+        <font color="red">
+            </br>{{ hint }}
+            </br>{{ realname }}
+         </br>{{ phone }}
+        </font>
+        {% csrf_token %}
+    </form>
+</div>
+
+
+
+</body>
+</html>
